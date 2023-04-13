@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - master
-env:
-  PUBLIC_URL: dmitrytereshchenko.github.io/static
 jobs:
   build:
     runs-on: ubuntu-latest
