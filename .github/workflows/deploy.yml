@@ -1,0 +1,23 @@
+name: Deploy to GH-pages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: |
+          npm ci
+          npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to gh-pages
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: public
